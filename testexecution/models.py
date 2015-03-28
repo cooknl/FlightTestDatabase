@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import html
+from testplanning import Program, Phase, FlightTestRequirement, Card
 
 class Mission(models.Model):
 	GO_CHOICES = (
@@ -45,6 +46,7 @@ class CardsFlown(models.Model)
 	card_quality = models.CharField(max_length=70,
 									choices=CARD_QUALITY_CHOICES,
 									default='Good')	
+	requirements = models.ManytoManyField(FlightTestRequirement, through='RequirementResults')
 	datetime_created = models.DateTimeField(auto_now_add=True)
 	datetime_last_modified = models.DateTimeField(auto_now=True)
 	comments = models.TextField
