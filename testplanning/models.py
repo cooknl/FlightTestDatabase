@@ -8,7 +8,7 @@ class Program(models.Model):
 	comments = models.TextField
 	
 	
-class Candidate(models.Model):
+class Capability(models.Model):
 	full_name = models.CharField(max_length=70)
 	short_name = models.CharField(max_length=16)
 	programs = models.ManyToManyField(Program)
@@ -19,7 +19,7 @@ class Candidate(models.Model):
 class Document(models.Model):
 	title = models.CharField(max_length=70)
 	number = models.CharField(max_length=70)
-	candidate = models.ForeignKey(Candidate)
+	capability = models.ForeignKey(Capability)
 	programs = models.ForeignKey(Program)
 	datetime_created = models.DateTimeField(auto_now_add=True)
 	datetime_last_modified = models.DateTimeField(auto_now=True)
@@ -29,7 +29,7 @@ class FlightTestRequirement(models.Model):
 	rqmt_number = models.CharField(max_length=70)
 	short_title = models.CharField(max_length=70)
 	description = models.TextField
-	candidate = models.ForeignKey(Candidate)
+	capability = models.ForeignKey(Capability)
 	documents = models.ManyToManyField(Document)
 	MOP_title = models.CharField(max_length=70)
 	MOP_number = models.PositiveSmallIntegerField
