@@ -58,6 +58,7 @@ class Card(models.Model):
 	description = models.TextField
 	requirements = models.ManyToManyField(FlightTestRequirement)
 	phase_created = models.ForeignKey(Phase)
+	sequence_slug = models.SlugField(max_length=16)
 	datetime_created = models.DateTimeField(auto_now_add=True)
 	datetime_last_modified = models.DateTimeField(auto_now=True)
 	comments = models.TextField
